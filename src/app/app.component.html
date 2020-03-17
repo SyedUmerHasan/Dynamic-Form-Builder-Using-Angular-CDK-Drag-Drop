@@ -1,4 +1,5 @@
 <div cdkDropListGroup>
+
   <div class="row">
     <div class="col-md-6">
       <div class="example-container">
@@ -24,77 +25,24 @@
 
         <div
           cdkDropList
-          [cdkDropListData]="basket"
+          [cdkDropListData]="field"
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
-          <div class="example-box" *ngFor="let item of basket" cdkDrag>
-            <div *ngIf="item.type === 'text'">
-              <div class="form-group">
-                <label for="">Text field</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                />
-                <small id="helpId" class="form-text text-muted"
-                  >Help text</small
-                >
-              </div>
-            </div>
 
-            <div *ngIf="item.type === 'number'">
-              <div class="form-group">
-                <label for="">Number Field</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                />
-                <small id="helpId" class="form-text text-muted"
-                  >Enter Number Field</small
-                >
-              </div>
-            </div>
 
-            <div *ngIf="item.type === 'password'">
-              <div class="form-group">
-                <label for="">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                />
-                <small id="helpId" class="form-text text-muted"
-                  >Enter Number Field</small
-                >
+          <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">Dynamic Forms</div>
+                  <div class="card-body">
+                    <dynamic-form-builder [fields]="getFields()"></dynamic-form-builder>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <div *ngIf="item.type === 'textarea'">
-              <div class="form-group">
-                <label for="">Text Area</label>
-                <textarea
-                  style="width: 100%;"
-                  class="form-control"
-                  name=""
-                  id=""
-                  rows="3"
-                ></textarea>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
+
 </div>
