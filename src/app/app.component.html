@@ -1,99 +1,32 @@
-<div cdkDropListGroup>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="example-container">
-        <h2>Available items</h2>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="items"
-          class="example-list"
-          cdkDropListSortingDisabled
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of items" cdkDrag>
-            {{ item.name }}
-          </div>
-        </div>
-      </div>
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: black;">
+  <div class="container">
+    <a class="navbar-brand" href="#">Dynamic Form Builder</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/fields/create">Create Form Field</a>
+        </li>
+      </ul>
     </div>
+  
+  </div>
+</nav>
 
-    <div class="col-md-6">
-      <div class="example-container">
-        <h2>Shopping basket</h2>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="basket"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of basket" cdkDrag>
-            <div *ngIf="item.type === 'text'">
-              <div class="form-group">
-                <label for="">Text field</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                />
-                <small id="helpId" class="form-text text-muted"
-                  >Help text</small
-                >
-              </div>
-            </div>
-
-            <div *ngIf="item.type === 'number'">
-              <div class="form-group">
-                <label for="">Number Field</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                />
-                <small id="helpId" class="form-text text-muted"
-                  >Enter Number Field</small
-                >
-              </div>
-            </div>
-
-            <div *ngIf="item.type === 'password'">
-              <div class="form-group">
-                <label for="">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                />
-                <small id="helpId" class="form-text text-muted"
-                  >Enter Number Field</small
-                >
-              </div>
-            </div>
-
-            <div *ngIf="item.type === 'textarea'">
-              <div class="form-group">
-                <label for="">Text Area</label>
-                <textarea
-                  style="width: 100%;"
-                  class="form-control"
-                  name=""
-                  id=""
-                  rows="3"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="row" style="margin-top:64px;">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h3>Dynamic Form Builder</h3>
+      </div>
+      <div class="card-body">
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>

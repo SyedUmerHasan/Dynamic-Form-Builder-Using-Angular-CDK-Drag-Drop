@@ -1,0 +1,82 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <div class="row">
+        <div class="col-12">
+            <h4>Create field</h4>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="">Label</label>
+                <input type="text" class="form-control" formControlName="label" id="" aria-describedby="helpId" placeholder="Enter Label Name">
+                <small id="helpId" class="form-text text-muted">Enter Label Name</small>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="">ID</label>
+                <input type="text" class="form-control" formControlName="id" aria-describedby="helpId" placeholder="Enter ID">
+                <small id="helpId" class="form-text text-muted">Enter ID Name</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" formControlName="name" aria-describedby="helpId" placeholder="Enter field Name">
+                <small id="helpId" class="form-text text-muted">Enter field Name</small>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="">Field Type</label>
+                <select class="form-control" formControlName="type">
+                    <option value="">Select</option>
+                    <option>Text</option>
+                    <option>Text Area</option>
+                    <option>Select</option>
+                    <option>Number</option>
+                </select>
+                <small id="helpId" class="form-text text-muted">Enter Select</small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="">Class</label>
+                <input type="text" class="form-control" formControlName="class" aria-describedby="helpId" placeholder="Enter Class Name" value="form-control">
+                <small id="helpId" class="form-text text-muted">Enter Class Name</small>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="">Message</label>
+                <input type="text" class="form-control" formControlName="message" aria-describedby="helpId" placeholder="Enter Message Validation">
+                <small id="helpId" class="form-text text-muted">Enter Message Validation</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="">Placeholder</label>
+                <input type="text" class="form-control" formControlName="placeholder" aria-describedby="helpId" placeholder="Enter placeholder">
+                <small id="helpId" class="form-text text-muted">Enter placeholder</small>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="">Value</label>
+                <input type="text" class="form-control" formControlName="value" aria-describedby="helpId" placeholder="Enter default value">
+                <small id="helpId" class="form-text text-muted">Enter default value</small>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+                
+</form>

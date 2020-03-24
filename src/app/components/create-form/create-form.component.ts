@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormArray, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {
   DragDropModule,
   CdkDragDrop,
   moveItemInArray,
   copyArrayItem
 } from "@angular/cdk/drag-drop";
-
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'app-create-form',
+  templateUrl: './create-form.component.html',
+  styleUrls: ['./create-form.component.css']
 })
-export class AppComponent implements OnInit {
-  title = "DragAndDrop";
+export class CreateFormComponent implements OnInit {
+
   textfield = 1;
   numberfield = 1;
   selectfield = 1;
@@ -133,4 +132,5 @@ export class AppComponent implements OnInit {
     onSubmit(){
       console.log("AppComponent -> onSubmit -> this.t.controls.values", this.form)
     }
+
 }
