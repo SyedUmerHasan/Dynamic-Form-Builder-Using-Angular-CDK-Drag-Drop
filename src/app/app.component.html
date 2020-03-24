@@ -1,64 +1,33 @@
-<div cdkDropListGroup>
-  
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: black;">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="example-container">
-          <h2>Available items</h2>
-  
-          <div
-            cdkDropList
-            [cdkDropListData]="items"
-            class="example-list"
-            cdkDropListSortingDisabled
-            (cdkDropListDropped)="drop($event)"
-          >
-            <div class="example-box" *ngFor="let item of items" cdkDrag>
-              {{ item.label }}
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <div class="col-md-6">
-        <div class="example-container">
-          <h2>Dynamic Form</h2>
-  
-          <div
-            cdkDropList
-            [cdkDropListData]="basket"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)"
-            style="width: 100%;"
-          >
-              <div class="card">
-                <div class="card-header">
-                  Create Form
-                </div>
-                <div class="card-body">
-                  <div *ngFor="let ticket of t.controls; let i = index" class="list-group list-group-flush" style="width: 100%;">            
-                    <div [formGroup]="ticket" class="form-row" style="width: 100%;" cdkDrag>
-                      <div class="list-group-item" style="width: 100%;">
-                          <div class="form-group col-12" style="width: 100%;">
-                              <label>{{ ticket.get('label').value }}</label>
-                              <input type="{{ ticket.get('type').value }}" formControlName="value" id="{{ ticket.get('id').value }}" class="{{ ticket.get('class').value }}" placeholder="{{ ticket.get('placeholder').value }}" [ngClass]="{ 'is-invalid': ticket.errors }" /> 
-                              <div *ngIf="ticket.errors" class="invalid-feedback">
-                                  <div *ngIf="ticket.errors.required">Option Description is required</div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary float-right">Submit</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <a class="navbar-brand" href="#">Dynamic Form Builder</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/fields/create">Create Form Field</a>
+        </li>
+      </ul>
     </div>
   
   </div>
-  
+</nav>
+
+<div class="row" style="margin-top:64px;">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h3>Dynamic Form Builder</h3>
+      </div>
+      <div class="card-body">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
 </div>
