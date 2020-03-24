@@ -1,100 +1,64 @@
 <div cdkDropListGroup>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="example-container">
-        <h2>Available items</h2>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="items"
-          class="example-list"
-          cdkDropListSortingDisabled
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of items" cdkDrag>
-            {{ item.name }}
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="example-container">
+          <h2>Available items</h2>
+  
+          <div
+            cdkDropList
+            [cdkDropListData]="items"
+            class="example-list"
+            cdkDropListSortingDisabled
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="example-box" *ngFor="let item of items" cdkDrag>
+              {{ item.label }}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="example-container">
-        <h2>Shopping basket</h2>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="basket"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of basket" cdkDrag>
-            <div *ngIf="item.type === 'text'">
-              <div class="form-group">
-                <label for="">Text field</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                />
-                <small id="helpId" class="form-text text-muted"
-                  >Help text</small
-                >
+  
+      <div class="col-md-6">
+        <div class="example-container">
+          <h2>Dynamic Form</h2>
+  
+          <div
+            cdkDropList
+            [cdkDropListData]="basket"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+            style="width: 100%;"
+          >
+              <div class="card">
+                <div class="card-header">
+                  Create Form
+                </div>
+                <div class="card-body">
+                  <div *ngFor="let ticket of t.controls; let i = index" class="list-group list-group-flush" style="width: 100%;">            
+                    <div [formGroup]="ticket" class="form-row" style="width: 100%;" cdkDrag>
+                      <div class="list-group-item" style="width: 100%;">
+                          <div class="form-group col-12" style="width: 100%;">
+                              <label>{{ ticket.get('label').value }}</label>
+                              <input type="{{ ticket.get('type').value }}" formControlName="value" id="{{ ticket.get('id').value }}" class="{{ ticket.get('class').value }}" placeholder="{{ ticket.get('placeholder').value }}" [ngClass]="{ 'is-invalid': ticket.errors }" /> 
+                              <div *ngIf="ticket.errors" class="invalid-feedback">
+                                  <div *ngIf="ticket.errors.required">Option Description is required</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <div *ngIf="item.type === 'number'">
-              <div class="form-group">
-                <label for="">Number Field</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                />
-                <small id="helpId" class="form-text text-muted"
-                  >Enter Number Field</small
-                >
-              </div>
-            </div>
-
-            <div *ngIf="item.type === 'password'">
-              <div class="form-group">
-                <label for="">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  name=""
-                  id=""
-                  aria-describedby="helpId"
-                  placeholder=""
-                />
-                <small id="helpId" class="form-text text-muted"
-                  >Enter Number Field</small
-                >
-              </div>
-            </div>
-
-            <div *ngIf="item.type === 'textarea'">
-              <div class="form-group">
-                <label for="">Text Area</label>
-                <textarea
-                  style="width: 100%;"
-                  class="form-control"
-                  name=""
-                  id=""
-                  rows="3"
-                ></textarea>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary float-right">Submit</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  
   </div>
+  
 </div>
