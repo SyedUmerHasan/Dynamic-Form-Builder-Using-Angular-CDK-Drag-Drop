@@ -2,7 +2,8 @@ import { Component } from "@angular/core";
 import {
   DragDropModule,
   CdkDragDrop,
-  moveItemInArray
+  moveItemInArray,
+  copyArrayItem
 } from "@angular/cdk/drag-drop";
 
 @Component({
@@ -12,28 +13,41 @@ import {
 })
 export class AppComponent {
   title = "DragAndDrop";
-  // tslint:disable:max-line-length
-  movies = [
+  items = [
     {
-      title: "Text Field",
-      field: "text"
+      name: "Text Area",
+      type: "textarea"
     },
     {
-      title: "Number Field",
-      field: "number"
+      name: "Text Field",
+      type: "text"
     },
     {
-      title: "Password Field",
-      field: "password"
+      name: "Password Field",
+      type: "password"
     },
     {
-      title: "Text Area",
-      field: "textarea"
+      name: "Number Field",
+      type: "number"
     }
   ];
-  // tslint:enable:max-line-length
 
-  drop(event: CdkDragDrop<{ title: string; poster: string }[]>) {
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+  basket = [];
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      copyArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }

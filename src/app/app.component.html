@@ -1,38 +1,100 @@
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let movie of movies" cdkDrag>
-    {{movie.title}}
-    <div *cdkDragPreview>
+<div cdkDropListGroup>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="example-container">
+        <h2>Available items</h2>
 
-      <div *ngIf="movie.field==='text'">
-        <div class="form-group" style="margin: 25px 50px">
-          <label for="">Text</label>
-          <input type="movie.field" class="form-control" name="Text" id="Text" value={{movie.field}} aria-describedby="helpId" placeholder="Text">
-          <small id="helpId" class="form-text text-muted">Help text</small>
+        <div
+          cdkDropList
+          [cdkDropListData]="items"
+          class="example-list"
+          cdkDropListSortingDisabled
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of items" cdkDrag>
+            {{ item.name }}
+          </div>
         </div>
       </div>
+    </div>
 
-      <div *ngIf="movie.field==='number'">
-        <div class="form-group" style="margin: 25px 50px">
-          <label for="">Text</label>
-          <input type="movie.field" class="form-control" name="Text" id="Text" value={{movie.field}} aria-describedby="helpId" placeholder="Text">
-          <small id="helpId" class="form-text text-muted">Help text</small>
+    <div class="col-md-6">
+      <div class="example-container">
+        <h2>Shopping basket</h2>
+
+        <div
+          cdkDropList
+          [cdkDropListData]="basket"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of basket" cdkDrag>
+            <div *ngIf="item.type === 'text'">
+              <div class="form-group">
+                <label for="">Text field</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name=""
+                  id=""
+                  aria-describedby="helpId"
+                  placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted"
+                  >Help text</small
+                >
+              </div>
+            </div>
+
+            <div *ngIf="item.type === 'number'">
+              <div class="form-group">
+                <label for="">Number Field</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name=""
+                  id=""
+                  aria-describedby="helpId"
+                  placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted"
+                  >Enter Number Field</small
+                >
+              </div>
+            </div>
+
+            <div *ngIf="item.type === 'password'">
+              <div class="form-group">
+                <label for="">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name=""
+                  id=""
+                  aria-describedby="helpId"
+                  placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted"
+                  >Enter Number Field</small
+                >
+              </div>
+            </div>
+
+            <div *ngIf="item.type === 'textarea'">
+              <div class="form-group">
+                <label for="">Text Area</label>
+                <textarea
+                  style="width: 100%;"
+                  class="form-control"
+                  name=""
+                  id=""
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div *ngIf="movie.field==='password'">
-        <div class="form-group" style="margin: 25px 50px">
-          <label for="">Text</label>
-          <input type="movie.field" class="form-control" name="Text" id="Text" value={{movie.field}} aria-describedby="helpId" placeholder="Text">
-          <small id="helpId" class="form-text text-muted">Help text</small>
-        </div>
-      </div>
-      <div *ngIf="movie.field==='textarea'">
-        <div class="form-group" style="margin: 25px 50px">
-          <label for="">Text Area</label>
-          <textarea class="form-control" name="textarea" id="textarea" rows="3"></textarea>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
