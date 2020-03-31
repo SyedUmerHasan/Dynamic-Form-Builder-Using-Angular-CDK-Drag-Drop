@@ -1,4 +1,16 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <div *ngIf="showSuccessStatus && showSuccessStatus == true">
+        <div class="alert alert-primary" role="alert">
+            <strong>{{showSuccessMessage}}</strong>
+        </div>
+    </div>
+
+    <div *ngIf="showErrorStatus && showErrorStatus == true">
+        <div class="alert alert-danger" role="alert">
+            <strong>{{showErrorMessage}}</strong>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-12">
             <h4>Create field</h4>
@@ -33,12 +45,12 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="">Field Type</label>
-                <select class="form-control" formControlName="type">
-                    <option value="">Select</option>
-                    <option>Text</option>
-                    <option>Text Area</option>
-                    <option>Select</option>
-                    <option>Number</option>
+                <select class="form-control" formControlName="type" (change)="onChange($event.target.value)">
+                    <option value="">--Please Select--</option>
+                    <option value="text">Text</option>
+                    <option value="textarea">Text Area</option>
+                    <option value="select">Select</option>
+                    <option value="number">Number</option>
                 </select>
                 <small id="helpId" class="form-text text-muted">Enter Select</small>
             </div>
@@ -77,6 +89,14 @@
             </div>
         </div>
     </div>
+
+
+    <div class="row" *ngIf="optionshow">
+        hdgasdhjhgjh
+    </div>
+
+
+    <!-- optionshow -->
     <button type="submit" class="btn btn-primary">Submit</button>
                 
 </form>

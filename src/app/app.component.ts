@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormItemsService } from './_services/form-items.service';
 import {
   DragDropModule,
   CdkDragDrop,
   moveItemInArray,
   copyArrayItem
 } from "@angular/cdk/drag-drop";
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: "app-root",
@@ -79,7 +81,22 @@ export class AppComponent implements OnInit {
   form: FormGroup;
   basket = [];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder,private formItemsService:  FormItemsService) {
+    this.formItemsService.getPassCandidatesCount()
+      .pipe(first())
+      .subscribe(
+        data => {
+          data.map((eachdata)=>{
+            this.items.push(eachdata);
+          })
+          console.log("AppComponent -> constructor -> this.items", this.items)
+        console.log("AppComponent -> constructor -> data", data)
+
+        },
+        error => {
+            console.log('Error in creating : ', error);
+        });
+  }
   ngOnInit() {
     this.form = this.formBuilder.group({
       formfields : new FormArray([])

@@ -9,6 +9,8 @@ import { CreateFormComponent } from './components/create-form/create-form.compon
 import { ShowFormComponent } from './components/show-form/show-form.component';
 import { CreatefieldsComponent } from './components/createfields/createfields.component';
 import { CommonModule } from '@angular/common';
+import { FormItemsService } from './_services/form-items.service';
+import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   
   { 
@@ -40,13 +42,14 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     BrowserModule, 
     DragDropModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [FormItemsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

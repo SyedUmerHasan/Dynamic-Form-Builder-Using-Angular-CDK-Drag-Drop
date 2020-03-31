@@ -1,25 +1,27 @@
 
 <div cdkDropListGroup>
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="example-container">
             <h2>Available items</h2>
             <div cdkDropList [cdkDropListData]="items" class="example-list" cdkDropListSortingDisabled
-              (cdkDropListDropped)="drop($event)">
+              >
               <div class="example-box" *ngFor="let item of items" cdkDrag>
                 {{ item.label }}
               </div>
             </div>
           </div>
+
+
         </div>
   
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="example-container">
             <h2>Dynamic Form</h2>
   
-            <div cdkDropList [cdkDropListData]="basket" class="example-list" (cdkDropListDropped)="drop($event)"
+            <div cdkDropList [cdkDropListData]="t.controls" class="example-list" (cdkDropListDropped)="drop($event)"
               style="width: 100%;">
               <div class="card">
                 <form [formGroup]="form" (ngSubmit)="onSubmit()" >
@@ -98,8 +100,21 @@
             </div>
           </div>
         </div>
+
+        <div class="col-md-4">
+          <div class="example-container">
+            <h2>Delete items</h2>
+            <div cdkDropList class="example-list" cdkDropListSortingDisabled
+            (cdkDropListDropped)="delete($event)">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+              <strong>DELETE</strong> 
+            </div>
+          </div>
+          </div>
+
+
+        </div>
+
       </div>
-  
     </div>
-  
   </div>
